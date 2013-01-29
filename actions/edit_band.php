@@ -18,8 +18,10 @@ $f = fopen('../data/bands.csv','w');
 fwrite($f,$data_string);
 fclose($f);
 
-$_SESSION['error'] = 'Your band has been edited';
-
+$_SESSION['error'] = array(
+		'text' => 'Your band has been edited',
+		'type' => 'info'
+);
 header('Location:../?p=list_bands');
 
 ?>

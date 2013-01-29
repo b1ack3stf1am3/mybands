@@ -7,7 +7,7 @@ session_start();
 $lines = file('../data/bands.csv',FILE_IGNORE_NEW_LINES);
 
 // Replace line with new values
-unset($lines[$_POST['linenum']] = "{$_POST['band_name']},{$_POST['band_genre']},{$_POST['band_numalbums']}");
+unset($lines[$_GET['band']]);
 
 // Create the sring to write the file
 $data_string = implode("\n",$lines);
@@ -17,7 +17,10 @@ $f = fopen('../data/bands.csv','w');
 fwrite($f,$data_string);
 fclose($f);
 
-$_SESSION['error'] = 'Your band has been edited';
+$_SESSION['error'] = array(
+		'text' => 'Your band has been deleted',
+		'type' => 'error'
+);
 
 header('Location:../?p=list_bands');
 ?>

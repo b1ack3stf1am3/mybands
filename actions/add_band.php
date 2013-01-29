@@ -16,6 +16,11 @@ if( $_POST['band_name'] != '' &&
 	
 	fclose($f);
 	
+	$_SESSION['error'] = array(
+			'text' => 'Your band has been added',
+			'type' => 'sucsess'
+	);
+	
 	header('Location:../?p=list_bands');
 	
 } else {
